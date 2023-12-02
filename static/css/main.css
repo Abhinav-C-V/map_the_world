@@ -545,7 +545,7 @@ form,
 }
 
 .line-scale-pulse-out > div {
-    background-color: #39b54a;
+    background-color: #FFFFFF;
     width: 4px;
     height: 35px;
     border-radius: 2px;
@@ -1101,7 +1101,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .stats-tabs li a:hover {
-    color: #39b54a;
+    color: #565656;
 }
 
 .stats-tabs li a em {
@@ -1884,7 +1884,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     display: block;
     width: 2px;
     height: 10.2rem;
-    background-color: #39b54a;
+    background-color: #FFFFFF;
     position: absolute;
     right: 7.2rem;
     bottom: 0;
@@ -2200,7 +2200,7 @@ html.no-csstransitions .home-content__main {
 .s-about {
     padding-top: 16.2rem;
     padding-bottom: 9rem;
-    background-color: #39b54a;
+    background-color:#e0e0e0;
     color: #010507;
     position: relative;
 }
@@ -2992,7 +2992,7 @@ html.no-csstransitions .home-content__main {
     display: block;
     width: 2px;
     height: 20.4rem;
-    background-color: #39b54a;
+    background-color: #e0e0e0;
     position: absolute;
     left: 50%;
     top: -10.2rem;
