@@ -1,32 +1,31 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from . models import PackageGallery, Package, Banner
-from numpy import random
+# from numpy import random
+import random
 from django.core.mail import EmailMessage
 from django.http import HttpResponse
 
 
+
 def home(request):
-    packages = Package.objects.all().order_by('id')
+    packages = Package.objects.all().order_by('id')  # Order by a relevant field
     ban = Banner.objects.all()
-    
-    ban_len = int(len(ban))
-    ban_rand = random.randint(0,ban_len)
-    ban_rand_obj = ban[ban_rand]
-    
-    pack_len = int(len(packages))
-    pack_rand = random.randint(0,pack_len)
-    pack_rand_obj = packages[pack_rand]
 
-    # package_images = PackageGallery.objects.all().order_by('id')
-    
-    context = {
-        'packages': packages,
-        'package_image': pack_rand_obj,
-        'ban': ban_rand_obj
-    }
-    return render(request, 'index.html',context)
+    if not packages or not ban:
+        # Handle the case where either packages or banners is empty
+        context = {}
+    else:
+        ban_rand_obj = random.choice(ban)
+        pack_rand_obj = random.choice(packages)
 
+        context = {
+            'packages': packages,
+            'package_image': pack_rand_obj,
+            'ban': ban_rand_obj
+        }
+
+    return render(request, 'index.html', context)
 
 
 def is_valid_email(email):
@@ -63,6 +62,7 @@ def email_message(request):
                 reply_to=[sender_email],
             )
             email.send()
+            print('Email sent successfully.')
             messages.warning(request,'Email sent successfully.')
             return redirect('home')
         else:
